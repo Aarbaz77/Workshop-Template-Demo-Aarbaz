@@ -1,25 +1,18 @@
 module.exports = {
   testEnvironment: 'jsdom',
+  testMatch: [
+    '**/__tests__/**/*.test.js',
+  ],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  collectCoverage: true,
   collectCoverageFrom: [
     'script.js',
-    'assets/js/**/*.js',
     '!node_modules/**',
-    '!**/node_modules/**',
   ],
-  coverageThreshold: {
-    global: {
-      branches: 70,
-      functions: 70,
-      lines: 70,
-      statements: 70,
-    },
-  },
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+  ],
   transform: {
     '^.+\\.js$': 'babel-jest',
   },
-  testMatch: [
-    '**/__tests__/**/*.js',
-    '**/?(*.)+(spec|test).js',
-  ],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };

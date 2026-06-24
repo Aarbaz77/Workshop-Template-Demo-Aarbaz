@@ -4,11 +4,11 @@
   "description": "A simple web application skeleton template for GitHub",
   "main": "index.html",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint assets/js/**/*.js script.js",
-    "lint:fix": "eslint assets/js/**/*.js script.js --fix",
+    "test": "jest --no-detectOpenHandles",
+    "test:watch": "jest --watch --no-detectOpenHandles",
+    "test:coverage": "jest --coverage --no-detectOpenHandles",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "pretest": "npm run lint"
   },
   "keywords": [

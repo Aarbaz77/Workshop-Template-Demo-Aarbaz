@@ -16,17 +16,17 @@ const navLinks = document.querySelectorAll('.nav-links a');
 
 // CTA Button Click Handler
 if (ctaButton) {
-    ctaButton.addEventListener('click', handleCtaClick);
+  ctaButton.addEventListener('click', handleCtaClick);
 }
 
 // Contact Form Submit Handler
 if (contactForm) {
-    contactForm.addEventListener('submit', handleFormSubmit);
+  contactForm.addEventListener('submit', handleFormSubmit);
 }
 
 // Smooth scrolling for navigation links
 navLinks.forEach(link => {
-    link.addEventListener('click', handleNavigation);
+  link.addEventListener('click', handleNavigation);
 });
 
 // ===========================
@@ -37,9 +37,9 @@ navLinks.forEach(link => {
  * Handle CTA button click
  */
 function handleCtaClick() {
-    console.log('CTA Button clicked');
-    alert('Welcome! Let\'s get started.');
-    // Add your custom functionality here
+  console.log('CTA Button clicked');
+  alert('Welcome! Let\'s get started.');
+  // Add your custom functionality here
 }
 
 /**
@@ -47,27 +47,27 @@ function handleCtaClick() {
  * @param {Event} event - Form submit event
  */
 function handleFormSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    // Get form values
-    const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
+  // Get form values
+  const formData = new FormData(contactForm);
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message')
+  };
 
-    // Log form data (replace with actual API call)
-    console.log('Form submitted:', data);
+  // Log form data (replace with actual API call)
+  console.log('Form submitted:', data);
 
-    // Show success message
-    showNotification('Message sent successfully!', 'success');
+  // Show success message
+  showNotification('Message sent successfully!', 'success');
 
-    // Reset form
-    contactForm.reset();
+  // Reset form
+  contactForm.reset();
 
-    // In a real application, you would send this data to a server
-    // Example: sendToServer('/api/contact', data);
+  // In a real application, you would send this data to a server
+  // Example: sendToServer('/api/contact', data);
 }
 
 /**
@@ -75,14 +75,14 @@ function handleFormSubmit(event) {
  * @param {Event} event - Click event
  */
 function handleNavigation(event) {
-    const href = event.target.getAttribute('href');
-    if (href && href.startsWith('#')) {
-        event.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+  const href = event.target.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    event.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
 }
 
 /**
@@ -91,28 +91,36 @@ function handleNavigation(event) {
  * @param {string} type - Notification type ('success', 'error', 'info')
  */
 function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.textContent = message;
+
+  // Color mapping for notification types
+  const colorMap = {
+    success: '#28a745',
+    error: '#dc3545',
+    info: '#0066cc',
+  };
+
+  notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
         padding: 1rem 1.5rem;
         border-radius: 4px;
-        background-color: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#0066cc'};
+        background-color: ${colorMap[type] || colorMap.info};
         color: white;
         z-index: 1000;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         animation: slideIn 0.3s ease;
     `;
 
-    // Add animation styles
-    if (!document.querySelector('style[data-notification]')) {
-        const style = document.createElement('style');
-        style.setAttribute('data-notification', 'true');
-        style.textContent = `
+  // Add animation styles
+  if (!document.querySelector('style[data-notification]')) {
+    const style = document.createElement('style');
+    style.setAttribute('data-notification', 'true');
+    style.textContent = `
             @keyframes slideIn {
                 from {
                     transform: translateX(400px);
@@ -124,16 +132,16 @@ function showNotification(message, type = 'info') {
                 }
             }
         `;
-        document.head.appendChild(style);
-    }
+    document.head.appendChild(style);
+  }
 
-    document.body.appendChild(notification);
+  document.body.appendChild(notification);
 
-    // Remove notification after 3 seconds
-    setTimeout(() => {
-        notification.style.animation = 'slideIn 0.3s ease reverse';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+  // Remove notification after 3 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideIn 0.3s ease reverse';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
 }
 
 // ===========================
@@ -144,13 +152,13 @@ function showNotification(message, type = 'info') {
  * Initialize the application
  */
 function init() {
-    console.log('Web Application initialized');
-    // Add any initialization code here
+  console.log('Web Application initialized');
+  // Add any initialization code here
 }
 
 // Run initialization when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', init);
 } else {
-    init();
+  init();
 }
