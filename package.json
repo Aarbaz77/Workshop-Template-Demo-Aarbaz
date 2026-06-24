@@ -4,7 +4,12 @@
   "description": "A simple web application skeleton template for GitHub",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint assets/js/**/*.js script.js",
+    "lint:fix": "eslint assets/js/**/*.js script.js --fix",
+    "pretest": "npm run lint"
   },
   "keywords": [
     "web-application",
@@ -16,5 +21,13 @@
   ],
   "author": "Your Name",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.0",
+    "babel-jest": "^25.0.0",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "jest": "^25.0.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
 }

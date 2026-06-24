@@ -110,6 +110,48 @@ Parameters:
 - `message` (string): The message to display
 - `type` (string): 'success', 'error', or 'info'
 
+## 🧪 Testing & Quality Assurance
+
+This project includes automated testing with **Jest**, linting with **ESLint**, and **GitHub Actions CI/CD**.
+
+### Running Tests
+
+```bash
+# Install dependencies first
+npm install
+
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Check code style
+npm run lint
+
+# Automatically fix linting errors
+npm run lint:fix
+```
+
+### Test Coverage
+
+- **Minimum Threshold**: 70% across all metrics
+- **Test Suites**: DOM, Form, Notifications
+- **Continuous Integration**: Automatic testing on push/PR
+
+### CI/CD Pipeline
+
+Tests run automatically via GitHub Actions on:
+- ✅ Push to `main` or `develop` branches
+- ✅ Pull Requests to `main` or `develop` branches
+- ✅ Tests on Node.js 18.x and 20.x
+- ✅ Coverage reports uploaded to Codecov
+
+For detailed testing information, see [TESTING.md](TESTING.md) and [CODE_QUALITY.md](CODE_QUALITY.md)
+
 ## 🌐 Deployment
 
 ### GitHub Pages
