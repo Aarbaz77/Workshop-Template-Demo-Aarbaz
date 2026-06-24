@@ -1,0 +1,20 @@
+{
+  "name": "web-app-skeleton",
+  "version": "1.0.0",
+  "description": "A simple web application skeleton template for GitHub",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web-application",
+    "template",
+    "skeleton",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {}
+}
